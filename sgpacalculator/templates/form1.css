@@ -1,0 +1,110 @@
+
+@media screen and (max-width: 500px) {
+  .header{
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+h1{
+  font-family: 'Bree Serif', serif;
+}
+/* Bordered form */
+form {
+  border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 20%;
+  border-radius: 20%;
+  text-align: left;
+}
+
+/* Add padding to containers */
+.container1 {
+  padding: 25px;
+  font-family: 'Roboto Slab', serif;
+  text-align: left;
+  height: 120px;
+  width: 400px;
+  transform: translate(100%, -20%);
+}
+
+.container2 {
+  padding: 25px;
+  font-family: 'Roboto Slab', serif;
+  text-align: left;
+  height: 40px;
+  width: 350px;
+  transform: translate(119%, 60%);
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 100px) {
+  span.psw {
+    display: block;
+    float: none;
+    width: auto;
+  }
+}
+/*--------------------------------*/
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 40px 50px;
+  height: 20px;
+  text-align: justify;
+}
+/* Float the link section to the right */
+.header-right {
+  float: right;
+  height: 10px;
+  width: 50px;
+}
