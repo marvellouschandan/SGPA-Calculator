@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>getSGPA</title>
+    <link rel="stylesheet" href="form1.css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="header">
+      <h1>SGPA CALCULATOR</h1>
+      <!-- <div class="header-right">
+        <h4><a href="#contact">Contact</a></h4>
+        <h4><a href="#about">About</a></h4>
+      </div> -->
+    </div>
+
+
+
+    <form action="calculate_sgpa" method="post">
+        <div class="imgcontainer">
+          <img src="image.png" class="avatar"><br>
+        </div>
+
+        <div class="container1">
+
+	{% csrf_token %}
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <input type="submit">Login</input>
+
+        </div>
+
+        <div class="container2" style="background-color:#f1f1f1">
+          <span class="psw"><a href="https://academics.gndec.ac.in/forgotpassword/">Forgot password?</a></span>
+        </div>
+    </form>
+
+  </body>
+</html>
