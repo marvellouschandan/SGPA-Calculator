@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<body bgcolor="#00ace6">
+	<center>
+			<h1>Sorry {{name}}! There is something wrong!</h1>
+			<h1>Please look your result manually!</h1>
+	</center><br>
+	
+	<br>
+
+	<hr>
+
+	<!-- table variable is in HTML format, to print HTML code,
+		 we need to declare it as safe -->
+
+	{% autoescape on %}
+	    {{ table|safe }}
+	{% endautoescape %}
+	<hr>
+
+</body>
+
+{% endblock %}
+
+

@@ -68,7 +68,10 @@ def calculate_sgpa(request):
         else:
             fail_flag=1
 
-    sgpa=credit_grade_sum/total_credit
+    try:
+        sgpa=credit_grade_sum/total_credit
+    except:
+        print("Error: Credit Being Zero")
 
     # +============================================================================
     # Creating HTML table for displaying on Result.HTML
@@ -92,10 +95,7 @@ def calculate_sgpa(request):
     # Responding to the request
     
     if fail_flag!=1:
-        string="""Congratulations Mr./Mrs. {} !!
-    Your expected SGPA is {:0.2f}
-    Your expected percentage is {:0.2f}%""".format(candidate_name, sgpa, sgpa*9.5)
+        return render(request, 'result.html', {"sgpa":"{:0.2f}".format(sgpa), "percent":"{:0.2f}".format(sgpa*9.5), "name":candidate_name, "table":table_string})
     else:
-        string="Sorry, your result cannot be displayed. Please check your result manually!"
-    return render(request, 'result.html', {"sgpa":"{:0.2f}".format(sgpa), "percent":"{:0.2f}".format(sgpa*9.5), "name":candidate_name, "table":table_string})
+        return render(request, 'error.html', {"name":candidate_name, "table":table_string})
 
