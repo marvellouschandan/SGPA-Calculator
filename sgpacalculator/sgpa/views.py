@@ -73,7 +73,7 @@ def calculate_sgpa(request):
     Your expected percentage is {:0.2f}%""".format(candidate_name, sgpa, sgpa*9.5)
     else:
         string="Sorry, your result cannot be displayed. Please check your result manually!"
-    return render(request, 'result.html', {"result":string})
+    return render(request, 'result.html', {"sgpa":"{:0.2f}".format(sgpa), "percent":"{:0.2f}".format(sgpa*9.5), "name":candidate_name})
 
 #def calculate_sgpa(request):
 #    UID = request.POST["uname"]
