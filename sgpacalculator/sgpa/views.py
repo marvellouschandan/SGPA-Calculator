@@ -27,7 +27,10 @@ def calculate_sgpa(request):
     rpost = requests.post("https://academics.gndec.ac.in", cookies=cookies, data=values)
     soup=BeautifulSoup(rpost.content,'html.parser')
     
-    
+   
+    # +===================================================================================
+    # Clearing HTML tags and making list of contents
+
     td_tags = list(soup.find_all('td'))
     #print(td_tags)
     candidate_name = td_tags[0].get_text()
@@ -49,8 +52,11 @@ def calculate_sgpa(request):
             count+=1
     
     #print(subject_list)
-    
-    fail_flag=0
+
+    # +============================================================================
+    # Calculating the SGPA
+
+    fail_flag=0  # To check if a student failed in a subject or not
     
     total_credit=0
     credit_grade_sum=0
@@ -61,11 +67,29 @@ def calculate_sgpa(request):
             total_credit += int(subject[12])
         else:
             fail_flag=1
-    
-    
-    #print(tabulate(subject_list,headers=["Semester","Subject Code","M code","Subject Title","Theory / Practical","Result Type","Internal Obtained Marks", "Internal Max. Marks", "External Obtained Marks", "External Max. Marks", "Grade Letter", "Grade Point", "Credits"]))
-    
+
     sgpa=credit_grade_sum/total_credit
+
+    # +============================================================================
+    # Creating HTML table for displaying on Result.HTML
+
+    headers=["Semester","Subject Code","M code","Subject Title","Theory / Practical","Result Type","Internal Obtained Marks", "Internal Max. Marks", "External Obtained Marks", "External Max. Marks", "Grade Letter", "Grade Point", "Credits"]
+    
+    table_string="<table>\n"
+
+    for header in headers:
+        table_string+="<th>{}</th>\n".format(header)
+
+    for subject in subject_list:
+        table_string+="<tr>\n"
+        for item in subject:
+            table_string += "<td>{}</td>\n".format(item)
+        table_string+="</tr>\n"
+
+    table_string+="</table>"
+
+    # +============================================================================
+    # Responding to the request
     
     if fail_flag!=1:
         string="""Congratulations Mr./Mrs. {} !!
@@ -73,10 +97,5 @@ def calculate_sgpa(request):
     Your expected percentage is {:0.2f}%""".format(candidate_name, sgpa, sgpa*9.5)
     else:
         string="Sorry, your result cannot be displayed. Please check your result manually!"
-    return render(request, 'result.html', {"sgpa":"{:0.2f}".format(sgpa), "percent":"{:0.2f}".format(sgpa*9.5), "name":candidate_name})
+    return render(request, 'result.html', {"sgpa":"{:0.2f}".format(sgpa), "percent":"{:0.2f}".format(sgpa*9.5), "name":candidate_name, "table":table_string})
 
-#def calculate_sgpa(request):
-#    UID = request.POST["uname"]
-#    PSW = request.POST["psw"]
-#    string=str(UID)+str(PSW)
-#    return render(request, 'result.html', {"result":string})

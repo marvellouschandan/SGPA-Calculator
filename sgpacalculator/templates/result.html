@@ -3,6 +3,24 @@
 
 {% block content %}
 
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+
 <body bgcolor="#00ace6">
 	<center>
 			{% load static %}<img src="{% static "congratulations.jpg" %}">
@@ -11,6 +29,19 @@
 	<h1><center>Congratulations {{name}} !!</center></h1>
 	<h1><center>You have scored an expected of {{sgpa}} SGPA with {{percent}} %!</center></h1>
 	
+
+	<br>
+
+	<hr>
+
+	<!-- table variable is in HTML format, to print HTML code,
+		 we need to declare it as safe -->
+
+	{% autoescape on %}
+	    {{ table|safe }}
+	{% endautoescape %}
+	<hr>
+
 </body>
 
 {% endblock %}

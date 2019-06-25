@@ -49,6 +49,19 @@ for subject in subject_list:
     else:
         fail_flag=1
 
+headers=["Semester","Subject Code","M code","Subject Title","Theory / Practical","Result Type","Internal Obtained Marks", "Internal Max. Marks", "External Obtained Marks", "External Max. Marks", "Grade Letter", "Grade Point", "Credits"]
+
+table_string="<table>\n"
+subject_list.insert(0, headers)
+
+for subject in subject_list:
+    table_string+="<tr>\n"
+    for item in subject:
+        table_string += "<td>{}</td>\n".format(item)
+    table_string+="</tr>\n"
+table_string+="</table>"
+
+print(table_string)
 
 #print(tabulate(subject_list,headers=["Semester","Subject Code","M code","Subject Title","Theory / Practical","Result Type","Internal Obtained Marks", "Internal Max. Marks", "External Obtained Marks", "External Max. Marks", "Grade Letter", "Grade Point", "Credits"]))
 
