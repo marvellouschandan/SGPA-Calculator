@@ -21,9 +21,10 @@
     }
 </style>
 
-<body bgcolor="#00ace6">
+<body>
 	<center>
 			<h1>Sorry {{name}}! There is something wrong!</h1>
+			{% load static %}<img src="{% static "sad.png" %}">
 			<h1>Please look your result manually!</h1>
 	</center><br>
 	
